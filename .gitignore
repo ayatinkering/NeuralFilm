@@ -2,7 +2,54 @@ data/
 
 checkpoints/
 *.pth
+*.pt
+*.onnx
+*.pkl
+*.h5
 
 __pycache__/
+*.pyc
+*.pyo
 .ipynb_checkpoints/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+venv/
+.env
+.env.local
+.env.production
+*.env
+
+# os
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# frontend
+node_modules/
+frontend/node_modules/
+dist/
+output/
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# logs
+*.log
+wandb/
+runs/
+
+# zip files (you have kodak_gold_200.zip visible)
+*.zip
+*.tar.gz
+*.rar
