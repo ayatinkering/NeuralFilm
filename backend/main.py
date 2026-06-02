@@ -18,10 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ==========================================
-# THE BLUEPRINT: CycleGAN ResNet Architecture
-# (This perfectly matches the GitHub repo you used)
-# ==========================================
+# CycleGAN ResNet Architecture
+
 class ResnetBlock(nn.Module):
     def __init__(self, dim):
         super(ResnetBlock, self).__init__()
