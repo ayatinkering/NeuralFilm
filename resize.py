@@ -1,6 +1,7 @@
 import os
 from PIL import Image
 
+#resize all images to 256x256
 def process_directory(directory):
     for filename in os.listdir(directory):
         if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
