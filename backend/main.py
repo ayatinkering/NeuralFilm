@@ -76,30 +76,21 @@ class ResnetGenerator(nn.Module):
     def forward(self, input):
         return self.model(input)
 
-# ==========================================
-# LOAD YOUR KAGGLE WEIGHTS INTO THE BLUEPRINT
-# ==========================================
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# 1. Create an empty brain using the blueprint
 model = ResnetGenerator().to(device)
 
-# 2. Load your numbers from the .pth file
 state_dict = torch.load("latest_net_G_A.pth", map_location=device)
 
-# 3. Clean the dictionary keys (removes 'module.' if trained on multiple GPUs)
 clean_state_dict = {k.replace('module.', ''): v for k, v in state_dict.items()}
 
-# 4. Pour the numbers into the empty brain
 model.load_state_dict(clean_state_dict)
 
-# 5. Turn it on
 model.eval() 
 
 
-# ==========================================
-# WEB SERVER LOGIC
-# ==========================================
+# Web Server
+
 transform_in = transforms.Compose([
     transforms.Resize((1024, 1024)), 
     transforms.ToTensor(),
