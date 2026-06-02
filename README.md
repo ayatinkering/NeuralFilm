@@ -131,41 +131,6 @@ file: image file
 }
 ```
 
-## Dataset Preparation
-
-`resize.py` crops images to a centered square and resizes them to `256x256`. It currently targets:
-
-```text
-./data/kodak_gold_200/trainA
-./data/kodak_gold_200/trainB
-```
-
-Run it from the project root after placing image datasets in the expected folders:
-
-```bash
-python resize.py
-```
-
-## What I Learned
-
-This project combines computer vision, model serving, and frontend product design. Key engineering areas include:
-
-- Building a PyTorch inference pipeline for image-to-image translation.
-- Serving ML models through a production-style HTTP API.
-- Handling image upload, encoding, and rendering across frontend/backend boundaries.
-- Designing an intuitive visual comparison UI for subjective image quality.
-- Structuring a small full-stack ML project for local development.
-
-## Roadmap
-
-- Add a `requirements.txt` or `pyproject.toml` for reproducible backend installs.
-- Add model checkpoint download instructions or release artifacts.
-- Add multiple film stock presets.
-- Add output download support.
-- Improve error handling for missing checkpoints and invalid uploads.
-- Add automated tests for the API and frontend.
-- Add deployment instructions for the frontend and backend.
-
 ## Contributing
 
 To contribute:
