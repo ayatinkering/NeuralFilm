@@ -1,6 +1,8 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+import os
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
@@ -80,7 +82,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model = ResnetGenerator().to(device)
 
-state_dict = torch.load("latest_net_G_A.pth", map_location=device)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, "latest_net_G_A.pth")
+state_dict = torch.load(model_path, map_location=device)
 
 clean_state_dict = {k.replace('module.', ''): v for k, v in state_dict.items()}
 
@@ -119,3 +123,21 @@ async def emulate_film(file: UploadFile = File(...)):
     img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
     
     return JSONResponse(content={"emulated_image": img_str})
+
+# Serve static files from frontend/dist
+current_dir = os.path.dirname(os.path.abspath(__file__))
+paths_to_try = [
+    os.path.abspath(os.path.join(current_dir, "../frontend/dist")),
+    os.path.abspath(os.path.join(current_dir, "dist")),
+    os.path.abspath(os.path.join(current_dir, "frontend/dist")),
+]
+frontend_dist_path = None
+for p in paths_to_try:
+    if os.path.exists(p):
+        frontend_dist_path = p
+        break
+
+if frontend_dist_path:
+    app.mount("/", StaticFiles(directory=frontend_dist_path, html=True), name="static")
+else:
+    print(f"Warning: Static files directory not found in any of: {paths_to_try}")

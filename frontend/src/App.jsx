@@ -20,7 +20,8 @@ export default function KodakEmulator() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/emulate', {
+      const apiBase = import.meta.env.DEV ? 'http://localhost:8000' : '';
+      const response = await fetch(`${apiBase}/emulate`, {
         method: 'POST',
         body: formData,
       });
