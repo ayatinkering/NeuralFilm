@@ -1,3 +1,12 @@
+---
+title: Neural Film
+emoji: 🎞️
+colorFrom: amber
+colorTo: yellow
+sdk: docker
+app_port: 7860
+---
+
 # Neural Film
 
 Neural Film is an AI-powered film emulation app that transforms digital photos into a Kodak Gold 200-inspired look. It pairs a React image comparison interface with a PyTorch/FastAPI inference backend running a CycleGAN-style ResNet generator.
