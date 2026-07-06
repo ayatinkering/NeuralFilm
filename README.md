@@ -1,8 +1,8 @@
 ---
 title: Neural Film
 emoji: 🎞️
-colorFrom: amber
-colorTo: yellow
+colorFrom: yellow
+colorTo: red
 sdk: docker
 app_port: 7860
 ---
