@@ -111,17 +111,14 @@ export default function KodakEmulator() {
         </section>
 
         {/* Right Column: Project Info & Assets */}
-        <aside className="lg:col-span-5 flex flex-col gap-8 lg:border-l lg:border-stone-200 lg:pl-12">
+        <aside className="lg:col-span-5 flex flex-col gap-8 ">
           {/* Viewmaster Image Display */}
-          <div className="flex flex-col items-center justify-center bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
+          <div className="flex flex-col items-center justify-center bg-white p-6 rounded-xl shadow-sm">
             <img 
               src={viewmaster} 
               alt="Viewmaster Reel" 
               className="w-56 h-56 object-contain rounded-full shadow-inner bg-stone-50 border border-stone-100" 
             />
-            <p className="text-xs text-stone-400 mt-4 text-center tracking-wider uppercase font-medium">
-              Format: Viewmaster Stereo Reel
-            </p>
           </div>
 
           {/* Project Details */}
